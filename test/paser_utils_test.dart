@@ -1,4 +1,4 @@
-import 'package:paser_utils/paser_utils.dart';
+import 'package:parser_utils/paser_utils.dart';
 import 'package:test/test.dart';
 
 void main() {
