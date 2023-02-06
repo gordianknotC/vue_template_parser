@@ -1,17 +1,22 @@
-name: parser_utils
+name: vue_template_parser
+publish_to: none
+repository: https://github.com/gordianknotC/dart_vue_template_parser.git
 description: vue template parser - under development.
 version: 0.0.1
-author: gordianknot
 
 environment:
   sdk: ">=2.4.0 <3.0.0"
 
 dependencies:
   petitparser: ^2.4.0
-  IO:
-    path: ../IO
-  common:
-    path: ../common
+  dart_io:
+    git:
+      url: https://github.com/gordianknotC/dart_io.git
+      ref: master
+  dart_common:
+    git:
+      url: https://github.com/gordianknotC/dart_common.git
+      ref: master
  
 dev_dependencies:
   test: ^1.9.4

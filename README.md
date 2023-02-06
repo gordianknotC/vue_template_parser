@@ -5,4 +5,4 @@ __under development, not recommended.__
 
 
 [petitparser]: https://pub.dev/packages/petitparser
-[Parser]: /lib/vue_template/ast.vue.template.parser.dart
+[Parser]: /lib/src/ast.vue.template.parser.dart

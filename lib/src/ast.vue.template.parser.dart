@@ -1,11 +1,12 @@
-import 'package:common/common.dart';
-import 'package:parser_utils/vue_template/utils.dart';
+import 'package:dart_common/dart_common.dart';
 import 'package:petitparser/petitparser.dart';
+
+import '../src/ast.utils.dart';
 //import 'package:html/dom.dart' show DocumentFragment, Node, Element;
 //const IDENT_SP_PTN   = '[:\r\n\*/\\]\}\{\%\(\)\[,+-]+';
 //RegExp IDENT_SPLITER = new RegExp(IDENT_SP_PTN);
 
-final _log = Logger(name: "templ.parser", levels: [ELevel.debug, ELevel.critical, ELevel.error, ELevel.warning, ELevel.sys ]);
+final _log = print;
 
 
 const DIRECTIVES = [
@@ -157,13 +158,13 @@ class XTag<E> {
    }
    
    _addChild(XNode child_node){
-      _log.info('addChild: ${child_node.level} ');
-      _log.info('$child_node');
+      _log('addChild: ${child_node.level} ');
+      _log('$child_node');
       segment.addChild(child_node);
       child_node.addParent(segment);
-      _log.info('  addChild: ${child_node.level} ');
-      _log.info('$child_node');
-      _log.info('  parent: ${child_node.parent}');
+      _log('  addChild: ${child_node.level} ');
+      _log('$child_node');
+      _log('  parent: ${child_node.parent}');
    }
    
    XTag.NodeInit(XTag tag, List<List> content){
@@ -183,7 +184,7 @@ class XTag<E> {
             texts.addAll(txts
                .fold(<String>[], (initial, t) =>
             t.texts  + initial) );
-            _log.info('add texts: $texts');
+            _log('add texts: $texts');
          }
          if (elt_or_node.typename == XTag.ELT){
             _children.add(elt_or_node);
@@ -197,7 +198,7 @@ class XTag<E> {
          tag: tag, attrs: tag, text: this
       );
 
-      _log.info('add children ${_children.length}: $_children');
+      _log('add children ${_children.length}: $_children');
       _children.forEach((ch){
          _addChild(ch.segment);
       });
@@ -592,20 +593,20 @@ class VueMustacheBlockParser extends BaseGrammarParser{
       }
       
       _references ??= Set();
-      _log.log('referenceInit');
+      _log('referenceInit');
       
       travelElts(nodes.segment, scoped_vars, (XNode elt, List<String> s_vars){
          var vars  = getScopedVars(elt);
          if (vars != null)
             scoped_vars.addAll(vars);
          
-         _log.info('forChild: $elt, ${elt.children}, ${elt.children.length} ');
-         _log.info('scoped_vars: $scoped_vars');
+         _log('forChild: $elt, ${elt.children}, ${elt.children.length} ');
+         _log('scoped_vars: $scoped_vars');
          
          var attributes = getIdentsFromAttrs(elt, scoped_vars);
          var variables  = getIdentsFromScript(elt, scoped_vars);
-         _log.info('  attr: ${attributes.toList()}');
-         _log.info('  vars: $variables');
+         _log('  attr: ${attributes.toList()}');
+         _log('  vars: $variables');
          
          if (variables != null)
             _references.addAll(variables);

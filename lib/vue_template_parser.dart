@@ -1,4 +1,4 @@
-library paser_utils;
+library vue_template_parser;
 
 /// A Calculator.
 class Calculator {
