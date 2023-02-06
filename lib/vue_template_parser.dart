@@ -1,7 +1,8 @@
 library vue_template_parser;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'src/vue.grammar.base.dart';
+export 'src/vue.grammar.mustache_block.dart';
+export 'src/vue.grammar.script.dart';
+export 'src/vue.grammar.variable.dart';
+export 'src/vue.grammar.xml.dart';
+export 'src/vue.tokens.dart';
